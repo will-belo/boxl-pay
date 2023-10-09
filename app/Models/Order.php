@@ -19,6 +19,7 @@ class Order extends Model
         'order_fee',
         'order_cost',
         'delivery_type',
+        'order_skus',
         'user_id',
     ];
 }

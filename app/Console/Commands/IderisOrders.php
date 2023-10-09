@@ -55,10 +55,13 @@ class IderisOrders extends Command
             }
             
             if( $iderisOrder->itemsCost == 0 ){
+                $sku = "";
                 foreach($iderisOrder->items as $item){
                     $itemBD = Sku::where('sku', $item->sku)->get()->first();
                     
                     $iderisOrder->itemsCost += $itemBD->cost;
+
+                    $sku .= $item->sku . ", ";
                 }
             }
             
@@ -71,6 +74,7 @@ class IderisOrders extends Command
                     'order_fee' => $iderisOrder->feeOrder,
                     'order_cost' => $iderisOrder->itemsCost,
                     'delivery_type' => $iderisOrder->deliveryType,
+                    'order_skus' => rtrim($sku, ", "),
                     'user_id' => $userData->id
                 ]);
                 
