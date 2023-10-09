@@ -58,7 +58,7 @@ class IderisOrders extends Command
                 foreach($iderisOrder->items as $item){
                     $itemBD = Sku::where('sku', $item->sku)->get()->first();
                     
-                    $iderisOrder->itemsCost = $itemBD->cost;
+                    $iderisOrder->itemsCost += $itemBD->cost;
                 }
             }
             
