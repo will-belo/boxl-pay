@@ -64,7 +64,7 @@ export function Order(props){
             <div>
                 <h1>{props.order.order_cost.toFixed(2)}</h1>
                 <span>Frete = {props.order.order_fee} BRL</span>
-                <span>{props.order.code}</span>
+                <span>{props.order.order_skus}</span>
             </div>
             <div>
                 <form method="post" onSubmit={pixPay}>
